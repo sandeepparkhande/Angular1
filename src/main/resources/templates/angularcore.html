@@ -1,0 +1,32 @@
+<html ng-app="my-app">
+<h1> Angular Js Tutorial</h1>
+<script src="angular.js"></script>
+<script>
+  var angular = angular.module('my-app', []);
+  angular.controller('recordCntrl', initRecordData);
+
+  function initRecordData($scope) {
+    $scope.names = [{ name: 'Sandeep', country: 'India' }, { name: 'San', country: 'USA' }, { name: 'Deep', country: 'Sweden' }];
+  };
+
+</script>
+
+<body ng-init=" hourofday = 1" ng-controller="recordCntrl">
+
+  Enter Hour of Day <input name="hourofday" ng-model="hourofday" type="textbox" /> Hour of Day Entered was {{hourofday}}
+  Condition Morning :
+  <div ng-if=" hourofday < 12"> Good Morning</div>
+  Condition Evening :
+  <div ng-if=" hourofday > 12"> Good Evening</div>
+
+
+  <div>
+      <table ng-repeat=" record in names">
+        <th> Person Name </th> <th> Country </th>
+        <tr><td>{{record.name}}</td><td>{{record.country}}</td></tr>
+      </table>
+      </br>
+  </div>
+</body>
+
+</html>

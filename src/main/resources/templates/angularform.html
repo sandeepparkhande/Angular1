@@ -1,0 +1,79 @@
+<html ng-app="myFormApp">
+<h1> Angular Input Control</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('myFormApp', []);
+    angular.controller('formCntrl', formFunction);
+    angular.value("user", "{}");
+
+    function formFunction() {
+        this.employeeList = [];
+        this.enableEdit=false;
+        this.addList = function (user) {
+            console.log(this.user.name);
+            this.enableEdit=false;
+            this.employeeList.push({ name: this.user.name, city: this.user.city });
+            this.user.name='';
+            this.user.city='';
+            
+        }
+        
+        this.editList = function () {
+            this.enableEdit=!this.enableEdit;
+        }
+        
+        this.deleteList = function (index) {
+            console.log(index);
+            this.employeeList.splice(index,1);
+        }
+
+        this.clearList = function () {
+            this.employeeList=[];
+        }
+    }
+
+</script>
+
+<body>
+    Below are Control Demos
+
+    <div ng-controller="formCntrl as cntrl">
+        <div>
+            <table class="w3-table-all w3-hoverable">
+                <tr>
+                    <td> Enter Name <input type="text" name="input" ng-model="cntrl.user.name" /> </td>
+                    <td>{{cntrl.user.name}}</td>
+                </tr>
+
+                <tr>
+                    <td> Enter City <input type="text" name="input" ng-model="cntrl.user.city" /> </td>
+                    <td>{{cntrl.user.city}}</td>
+                </tr>
+            </table>
+
+            <input type="button" value="Add To Table" ng-click="cntrl.addList(user)" class="w3-button" />
+            <input type="button" value="Save To Table" ng-click="cntrl.editList()" class="w3-button" ng-disabled="!cntrl.enableEdit""/>
+            <input type="button" value=" Click to Clear Table" ng-click="cntrl.clearList()" class="w3-button" />
+
+        </div>
+        <div>
+
+            <table class="w3-table-all w3-hoverable">
+
+                <tr ng-repeat="record in cntrl.employeeList" class="w3-tr-all">
+                    <td ng-hide="cntrl.enableEdit"> {{record.name}} </td>
+                    <td ng-show="cntrl.enableEdit"> <input type="text" ng-model="record.name"/> </td>
+                    <td ng-hide="cntrl.enableEdit"> {{record.city}}</td>
+                    <td ng-show="cntrl.enableEdit">  <input type="text" ng-model="record.city"/> </td>
+                    <td> <input type="button" value="edit" ng-click="cntrl.editList()"/></td>
+                    <td> <input type="button" value="delete" ng-click="cntrl.deleteList(index)"/></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

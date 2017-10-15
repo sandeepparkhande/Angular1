@@ -1,0 +1,129 @@
+<html ng-app="myApp">
+<h1> Angular Input Control</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var ang = angular.module('myApp', []);
+    var cntrl = ang.controller('inputCntrl', inputCntrlFunction);
+    function inputCntrlFunction() {
+         
+         this.master={};
+
+        this.populatelist = function (user) {
+            this.master=angular.copy(user);
+            this.employeeList=[{ name: 'Sandeep', code: '1111' }, { name: 'San', code: '2222' }, { name: 'Deep', code: '3333' }];
+        }
+
+        
+        this.clearlist = function () {
+            this.user=angular.copy(this.master);
+        }
+    }
+
+</script>
+
+<body>
+    Below are Control Demos
+
+    <div ng-controller="inputCntrl as cntrl">
+        <div>
+            <table class="w3-table-all w3-hoverable">
+                <tr>
+                    <td>Accept Input Box <input type="text" name="input" ng-model="cntrl.user.txtModel" /> </td>
+                    <td>{{cntrl.user.txtModel}}</td>
+                </tr>
+
+
+                <tr>
+                    <td> Select Password <input type="password" ng-model="cntrl.user.passwordModel" />
+                    </td>
+                    <td>{{cntrl.user.passwordModel}}</td>
+                </tr>
+
+                <tr>
+                    <td>Select Check Box <input type="checkbox" value="select" ng-model="cntrl.user.checkModel" /> </td>
+                    <td>{{cntrl.user.checkModel}}</td>
+                </tr>
+                <tr>
+                    <td> Select Radio Box Option 1 <input type="radio" value="Option1" ng-model="cntrl.user.user.radioModel" /> Option 2
+                        <input type="radio" value="Option2" ng-model="cntrl.user.radioModel" /> Option 3 <input type="radio" value="Option3"
+                            ng-model="cntrl.user.radioModel" />
+                    </td>
+                    <td>{{cntrl.user.radioModel}}</td>
+
+                </tr>
+
+                <tr>
+                    <td> Select Date <input type="date" ng-model="cntrl.user.dateModel" />
+                    </td>
+                    <td>{{cntrl.user.dateModel}}</td>
+                </tr>
+
+                <tr>
+                    <td> Select Color <input type="color" ng-model="cntrl.user.colorModel" />
+                    </td>
+                    <td>{{cntrl.user.colorModel}}</td>
+                </tr>
+
+                <tr>
+                    <td> Select Date Time Locale <input type="datetime-local" ng-model="cntrl.user.datetimelocalModel" />
+                    </td>
+                    <td>{{cntrl.user.datetimelocalModel}}</td>
+                </tr>
+
+
+                <tr>
+                    <td> Select File <input type="file" ng-model="cntrl.user.fileModel" />
+                    </td>
+                    <td>{{cntrl.user.fileModel}}</td>
+                </tr>
+
+
+                <tr>
+                    <td> Range <input type="range" ng-model="cntrl.user.rangeModel" />
+                    </td>
+                    <td>{{cntrl.user.rangeModel}}</td>
+                </tr>
+
+                <tr>
+                    <td> Search <input type="search" ng-model="cntrl.user.searchModel" />
+                    </td>
+                    <td>{{cntrl.user.searchModel}}</td>
+                </tr>
+
+                
+                <tr>
+                    <td> Week <input type="week" ng-model="cntrl.user.weekModel" />
+                    </td>
+                    <td>{{cntrl.user.weekModel}}</td>
+                </tr>
+
+                
+                <tr>
+                    <td> month <input type="month" ng-model="cntrl.user.monthModel" />
+                    </td>
+                    <td>{{cntrl.user.monthModel}}</td>
+                </tr>
+
+                <tr>
+                    <td> Tel <input type="tel" ng-model="cntrl.user.telModel" />
+                    </td>
+                    <td>{{cntrl.user.telModel}}</td>
+                </tr>
+
+            </table>
+
+            <input type="button" value=" Click Me to Populate Table" ng-click="cntrl.populatelist(user)" class="w3-button"/>
+            <input type="button" value=" Click Me to Clear Table" ng-click="cntrl.clearlist()" class="w3-button"/>
+        </div>
+        <div>
+            <ul ng-repeat="record in cntrl.employeeList" class="w3-ul-all">
+                <li> {{record.name}} {{record.code}}</li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>

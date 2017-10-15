@@ -1,0 +1,81 @@
+<html ng-app='myapp'>
+<h1> Service Factory </h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('myapp', []);
+    var controller = angular.controller('myAppCtrl', dataFunction);
+
+    angular.value('headValue', 'Page for Accessing Services');
+    angular.factory('indiaStock', indiaStockFn);
+    angular.service('stockSvc',stockSVCFn);
+
+    function stockSVCFn($http) {
+        
+        this.getStocks=function getStocks(){
+            //var request={method='GET',Accept='application/json',}
+            return $http.get('http://localhost:8080/stocks');
+        }
+
+    }
+
+    function indiaStockFn() {
+        return this.stockList = [{ name: 'Relience Inc', symbol: 'REL', price: '26.533' }, { name: 'Birla Inc', symbol: 'ABC', price: '43.733' }, { name: 'Tata Inc', symbol: 'TATA', price: '68.93' }, { name: 'Patanjali Inc', symbol: 'PATA', price: '44.46' }];
+    }
+
+    function dataFunction(indiaStock,stockSvc) {
+        
+        stockSvc.getStocks().then(function(response){
+        console.log(response);
+        });
+
+
+        this.selectMarket = function () {
+            if (this.market == 'IndiaStock') {
+                this.stockList = indiaStock;
+            }
+            if (this.market == 'IntStock') {
+                this.stockList = [{ name: 'IBM Inc', symbol: 'IBM', price: '12.333' }, { name: 'Google Inc', symbol: 'GOOGLE', price: '13.333' }, { name: 'Facebook Inc', symbol: 'FB', price: '21.333' }, { name: 'Apple Inc', symbol: 'APPL', price: '83.46' }];
+
+            }
+        }
+        
+    }
+
+</script>
+
+<body>
+
+
+    <div ng-controller="myAppCtrl as ctrl">
+        <div>
+            Select Stocks to view <br>
+            India Stocks <input type="radio" ng-model="ctrl.market" value="IndiaStock" ng-selected="ctrl.selectMarket()"
+            /> 
+            International Stocks <input type="radio" ng-model="ctrl.market" value="IntStock" ng-selected="ctrl.selectMarket()"
+            />
+
+        </div>
+
+        <div>
+            <table class="w3-table-all w3-hoverable">
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Stock Symbol</th>
+                    <th>Stock Price</th>
+                </tr>
+                <tr ng-repeat="record in ctrl.stockList">
+                    <td>{{record.name}}</td>
+                    <td>{{record.symbol}}</td>
+                    <td>{{record.price}}</td>
+                </tr>
+            </table>
+            {{ctrl.headValue}}
+        </div>
+    </div>
+
+</body>
+
+</html>
