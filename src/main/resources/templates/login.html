@@ -1,0 +1,50 @@
+<html ng-app="my-app">
+<h1> Registration Page</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('my-app', []);
+    angular.controller('loginCntrl', registrationCntrl);
+
+    function loginCntrl($scope) {
+        $scope.names = [{ name: 'Sandeep', country: 'India' }, { name: 'San', country: 'USA' }, { name: 'Deep', country: 'Sweden' }];
+    };
+
+</script>
+
+<body ng-controller="loginCntrl">
+
+    <div>
+        <table>
+            <tr>
+                <td> Enter your Login Credentials </td>
+            </tr>
+            <tr>
+                <td>User Name </td>
+                <td>
+                    <input type="text" name="userName" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password </td>
+                <td>
+                    <input type="password" name="password" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <input type="button" name="Login" value="Login" /> </td>
+                <td>
+                    <a href="www.google.com">Forgot Password</a>
+                </td>
+            </tr>
+
+        </table>
+        </br>
+    </div>
+</body>
+
+</html>

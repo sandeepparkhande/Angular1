@@ -1,0 +1,97 @@
+<html ng-app="my-app">
+<h1> Registration Page</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('my-app', []);
+    angular.controller('registrationCntrl', registrationCntrl);
+
+    function registrationCntrl($scope) {
+        $scope.names = [{ name: 'Sandeep', country: 'India' }, { name: 'San', country: 'USA' }, { name: 'Deep', country: 'Sweden' }];
+    };
+
+</script>
+
+<body ng-controller="registrationCntrl">
+
+    <a href="www.google.com"> Back to Home</a>
+    <div>
+        <table>
+            <tr>
+                <td> Name </td>
+                <td> <input type="text" name="name" /> </td>
+                <td>User Name </td>
+                <td> <input type="text" name="userName" /></td>
+                <td>Password </td>
+                <td><input type="password" name="password" /> </td>
+            </tr>
+
+            <tr>
+                <td> Date of Birth </td>
+                <td><input type="date" name="dob" /> </td>
+                <td> Gender </td>
+                <td><input type="radio" name="gender" value="Male" /> <input type="radio" name="gender" value="Female" /></td>
+                <td> Retype Password </td>
+                <td> <input type="password" name="retypePassword" /> </td>
+            </tr>
+
+            <tr>
+                <td> Contact Number </td>
+                <td><input type="phone" name="contactNumber" /> </td>
+                <td> Email </td>
+                <td><input type="email" name="email" /> </td>
+                <td>Citizenship </td>
+                <td><input type="text" name="citizenship" /> </td>
+            </tr>
+
+
+            <tr>
+                <td> Account Type </td>
+                <td><input type="text" name="accountType" /> </td>
+                <td> Registation Date </td>
+                <td><input type="date" name="registrationDate" /> </td>
+                <td>Citizen Status </td>
+                <td><input type="text" name="citizenStatus" /> </td>
+            </tr>
+
+            <tr>
+                <td> Branch Name </td>
+                <td><input type="text" name="branchName" /> </td>
+                <td> Initial Deposit Amount </td>
+                <td><input type="text" name="initDepositAmount" /> </td>
+                <td>PAN Number </td>
+                <td><input type="text" name="panNumber" /> </td>
+            </tr>
+
+            <tr>
+                <td> Address Line 1 </td>
+                <td><input type="text" name="adressLine1" /> </td>
+                <td> Address Line 2 </td>
+                <td><input type="text" name="adressLine2" /> </td>
+                <td> City </td>
+                <td><input type="text" name="city" /> </td>
+            </tr>
+
+            <tr>
+                <td> State </td>
+                <td><input type="text" name="state" /> </td>
+                <td> Country </td>
+                <td><input type="text" name="country" /> </td>
+                <td> PIN no </td>
+                <td><input type="text" name="pin" /> </td>
+            </tr>
+
+
+            <tr>
+                <td> <input type="button" name="Register" value="Register" /> </td>
+                <td> <input type="button" name="Reset" value="Reset" /> </td>
+                <td> <input type="button" name="Cancel" value="Cancel" /></td>
+            </tr>
+
+        </table>
+        </br>
+    </div>
+</body>
+
+</html>

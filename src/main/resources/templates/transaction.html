@@ -1,0 +1,58 @@
+<html ng-app="my-app">
+<h1> Transaction Page</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('my-app', []);
+    angular.controller('transactionCntrl', transactionCntrl);
+
+    function transactionCntrl($scope) {
+        $scope.names = [{ name: 'Sandeep', country: 'India' }, { name: 'San', country: 'USA' }, { name: 'Deep', country: 'Sweden' }];
+    };
+
+</script>
+
+<body ng-controller="transactionCntrl">
+
+    <a href="www.google.com"> Back to Home</a>
+    <div>
+        <table>
+            <tr>
+                <td> Account No </td>
+                <td> <input type="text" name="accountNo" /> </td>
+                <td>Account Name </td>
+                <td> <input type="text" name="accountName" /></td>
+                <td>Account Type </td>
+                <td><input type="text" name="accountType" /> </td>
+            </tr>
+
+            <tr>
+                <td> Transaction Type </td>
+                <td><input type="text" name="trasactionType" /> </td>
+                <td> Amount </td>
+                <td><input type="text" name="amount" value="Male" /> </td>
+                <td> Transaction Date </td>
+                <td> <input type="date" name="transactionDate" /> </td>
+            </tr>
+
+            <tr>
+                <td> Transaction Id </td>
+                <td><input type="text" name="transactionId" /> </td>
+                
+            </tr>
+
+
+
+            <tr>
+                <td> <input type="button" name="Submit" value="Submit" /> </td>
+                <td> <input type="button" name="Reset" value="Reset" /> </td>
+                <td> <input type="button" name="Cancel" value="Cancel" /></td>
+            </tr>
+
+        </table>
+        </br>
+    </div>
+</body>
+
+</html>

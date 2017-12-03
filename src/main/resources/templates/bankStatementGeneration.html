@@ -1,0 +1,69 @@
+<html ng-app="my-app">
+<h1> Transaction Page</h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="angular.js"></script>
+<script>
+    var angular = angular.module('my-app', []);
+    angular.controller('statementGenCntrl', statementGenCntrl);
+
+    function statementGenCntrl($scope) {
+        $scope.names = [{ name: 'Sandeep', country: 'India' }, { name: 'San', country: 'USA' }, { name: 'Deep', country: 'Sweden' }];
+    };
+
+</script>
+
+<body ng-controller="statementGenCntrl">
+
+    <a href="www.google.com"> Back to Home</a>
+    <div>
+        <table>
+            <tr>
+                <td> From </td>
+                <td> <input type="date" name="from" /> </td>
+                <td>To </td>
+                <td> <input type="date" name="to" /></td>
+                <td>Transaction Type </td>
+                <td><input type="text" name="transactionType" /> </td>
+            </tr>
+
+            <tr>
+                <td> Number of Transaction </td>
+                <td><input type="text" name="trasactionNo" /> </td>
+                <td> Policy Name </td>
+                <td><input type="text" name="policyName" /> </td>
+                <td> <input type="button" name="View" value="View"/></td>
+                <td> <input type="button" name="Download" value="Download"/></td>
+                
+            </tr>
+
+            <tr>
+                <td> Transaction Id </td>
+                <td><input type="text" name="transactionId" /> </td>
+                
+            </tr>
+         </table>
+        </br>
+    </div>
+
+    
+    <div>
+            <table class="w3-table-all w3-hoverable">
+                <tr>
+                    <th>Transaction Date</th>
+                    <th>Description</th>
+                    <th>Debit\Credit</th>
+                    <th>Balance</th>
+                </tr>
+                <tr ng-repeat="record in ctrl.transactionList">
+                    <td>{{record.transactioDate}}</td>
+                    <td>{{record.transactioDesciption}}</td>
+                    <td>{{record.transactionType}}</td>
+                    <td>{{record.amount}}</td>
+                </tr>
+            </table>
+            {{ctrl.headValue}}
+        </div>
+</body>
+
+</html>
